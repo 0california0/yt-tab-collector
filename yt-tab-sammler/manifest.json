@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Tab Collector",
+  "version": "1.0",
+  "description": "Sammelt die Links aller offenen YouTube-Tabs.",
+  "permissions": ["tabs"],
+  "action": { "default_popup": "popup.html", "default_title": "YouTube-Links sammeln" }
+}
