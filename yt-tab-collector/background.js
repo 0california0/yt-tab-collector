@@ -1,7 +1,5 @@
 const YT_PATTERNS = [
   "*://www.youtube.com/*",
-  "*://m.youtube.com/*",
-  "*://music.youtube.com/*",
   "*://youtu.be/*"
 ];
 
@@ -23,11 +21,13 @@ function cleanTitle(title) {
 
 chrome.action.onClicked.addListener(async () => {
   const tabs = await chrome.tabs.query({ url: YT_PATTERNS });
-  const items = tabs.map((t) => ({
+  const items = tabs
+  .map((t) => ({
     url: t.url,
     title: cleanTitle(t.title),
     videoId: getVideoId(t.url)
-  }));
+  }))
+  .filter((item) => item.videoId);
   await chrome.storage.local.set({
     collection: { collectedAt: Date.now(), items }
   });
