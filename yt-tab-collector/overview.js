@@ -35,15 +35,11 @@ function buildCard(item) {
 
 chrome.storage.local.get("collection", ({ collection }) => {
   if (!collection || !collection.items.length) {
-    meta.textContent = "Keine YouTube-Tabs gesammelt.";
+    meta.textContent = "Keine YouTube-Tabs gefunden.";
     return;
   }
   const date = new Date(collection.collectedAt).toLocaleString("de-DE");
-  meta.textContent = `${collection.items.length} Tabs, gesammelt am ${date}`;
+  meta.textContent = `${collection.items.length} Tabs gefunden`;
   collection.items.forEach((item) => grid.appendChild(buildCard(item)));
 
-  document.getElementById("copy").addEventListener("click", async (e) => {
-    await navigator.clipboard.writeText(collection.items.map((i) => i.url).join("\n"));
-    e.target.textContent = "Kopiert!";
-  });
 });
