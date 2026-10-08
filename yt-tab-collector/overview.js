@@ -23,7 +23,7 @@ function buildCard(item) {
   } else {
     thumb = document.createElement("div");
     thumb.className = "placeholder";
-    thumb.textContent = "Kein Video";
+    thumb.textContent = "no video";
   }
   thumb.classList.add("thumb");
 
@@ -43,11 +43,11 @@ function buildCard(item) {
 
 chrome.storage.local.get("collection", ({ collection }) => {
   if (!collection || !collection.items.length) {
-    meta.textContent = "Keine YouTube-Tabs gefunden.";
+    meta.textContent = "no YouTube-Tabs found.";
     return;
   }
   const date = new Date(collection.collectedAt).toLocaleString("de-DE");
-  meta.textContent = `${collection.items.length} Tabs gefunden`;
+  meta.textContent = `${collection.items.length} Tabs found`;
   collection.items.forEach((item) => grid.appendChild(buildCard(item)));
 
 });
