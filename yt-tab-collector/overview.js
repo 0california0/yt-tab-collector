@@ -1,5 +1,7 @@
 const grid = document.getElementById("grid");
 const meta = document.getElementById("meta");
+const SIZES = { small: 260, medium: 310, large: 360 };
+const sizeButtons = document.querySelectorAll("#sizes button");
 
 function buildCard(item) {
   const a = document.createElement("a");
@@ -48,4 +50,20 @@ chrome.storage.local.get("collection", ({ collection }) => {
   meta.textContent = `${collection.items.length} Tabs gefunden`;
   collection.items.forEach((item) => grid.appendChild(buildCard(item)));
 
+});
+
+function applySize(name) {
+  grid.style.setProperty("--min", SIZES[name] + "px");
+  sizeButtons.forEach((b) => b.classList.toggle("active", b.dataset.size === name));
+}
+
+chrome.storage.local.get("thumbSize", ({ thumbSize }) => {
+  applySize(thumbSize in SIZES ? thumbSize : "small");
+});
+
+sizeButtons.forEach((b) => {
+  b.addEventListener("click", () => {
+    applySize(b.dataset.size);
+    chrome.storage.local.set({ thumbSize: b.dataset.size });
+  });
 });
