@@ -2,6 +2,22 @@ const grid = document.getElementById("grid");
 const meta = document.getElementById("meta");
 const SIZES = { small: 260, medium: 310, large: 360 };
 const sizeButtons = document.querySelectorAll("#sizes button");
+const YT_PATTERNS = [
+  "*://www.youtube.com/*",
+  "*://youtu.be/*"
+];
+
+function getVideoId(urlString) {
+  try {
+    const u = new URL(urlString);
+    if (u.hostname === "youtu.be") return u.pathname.slice(1) || null;
+    if (u.searchParams.get("v")) return u.searchParams.get("v");
+    const m = u.pathname.match(/^\/(shorts|live|embed)\/([\w-]{11})/);
+    return m ? m[2] : null;
+  } catch {
+    return null;
+  }
+}
 
 function buildCard(item) {
   const a = document.createElement("a");
@@ -10,7 +26,15 @@ function buildCard(item) {
 
   a.addEventListener("click", async (e) => {
     e.preventDefault();
-    await chrome.tabs.create({ url: item.url });
+    const tabs = await chrome.tabs.query({ url: YT_PATTERNS });
+    const existing = tabs.find((t) => getVideoId(t.url) === item.videoId);
+
+    if (existing) {
+      await chrome.tabs.update(existing.id, { active: true });
+      await chrome.windows.update(existing.windowId, { focused: true });
+    } else {
+      await chrome.tabs.create({ url: item.url });
+    }
     const current = await chrome.tabs.getCurrent();
     chrome.tabs.remove(current.id);
   });
