@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "YouTube Tab Collector",
-  "version": "1.2",
+  "version": "1.3",
   "description": "Sammelt alle offenen YouTube-Tabs und zeigt sie als Übersicht mit Thumbnails",
   "permissions": ["tabs", "storage"],
   "background": { "service_worker": "background.js" },
