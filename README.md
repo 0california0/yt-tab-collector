@@ -16,4 +16,4 @@
 
 * click the icon and a window with all your open youtube tabs will appear
 * you can choose any video by clicking it. This will automatically open a new window with the selected video
-* *opional:* pin the extension for easier use
+* __opional:__ pin the extension for easier use
