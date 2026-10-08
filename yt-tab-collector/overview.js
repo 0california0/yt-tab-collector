@@ -19,6 +19,18 @@ function getVideoId(urlString) {
   }
 }
 
+async function closeItem(item, card) {
+  if (item.videoId) {
+    const tabs = await chrome.tabs.query({ url: YT_PATTERNS });
+    const ids = tabs.filter((t) => getVideoId(t.url) === item.videoId).map((t) => t.id);
+    if (ids.length) await chrome.tabs.remove(ids);
+  }
+  card.remove();
+  collection.items = collection.items.filter((i) => i !== item);
+  chrome.storage.local.set({ collection });
+  updateMeta();
+}
+
 function buildCard(item) {
   const a = document.createElement("a");
   a.className = "card";
@@ -61,17 +73,37 @@ function buildCard(item) {
   url.textContent = item.url;
   info.append(title, url);
 
-  a.append(thumb, info);
+  const close = document.createElement("button");
+  close.className = "close";
+  close.textContent = "✖";
+  close.title = "close tab ";
+  close.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    closeItem(item, a);
+  });
+
+  a.append(thumb, info, close);
   return a;
 }
 
-chrome.storage.local.get("collection", ({ collection }) => {
+let collection = null;
+
+function updateMeta() {
+  if (!collection.items.length) {
+    meta.textContent = "no YouTube-Tabs in the overview.";
+    return;
+  }
+  meta.textContent = `${collection.items.length} Tabs found`;
+}
+
+chrome.storage.local.get("collection", (data) => {
+  collection = data.collection;
   if (!collection || !collection.items.length) {
     meta.textContent = "no YouTube-Tabs found.";
     return;
   }
-  const date = new Date(collection.collectedAt).toLocaleString("de-DE");
-  meta.textContent = `${collection.items.length} Tabs found`;
+  updateMeta();
   collection.items.forEach((item) => grid.appendChild(buildCard(item)));
 
 });
