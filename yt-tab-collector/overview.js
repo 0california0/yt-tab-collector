@@ -5,7 +5,13 @@ function buildCard(item) {
   const a = document.createElement("a");
   a.className = "card";
   a.href = item.url;
-  a.target = "_blank";
+
+  a.addEventListener("click", async (e) => {
+    e.preventDefault();
+    await chrome.tabs.create({ url: item.url });
+    const current = await chrome.tabs.getCurrent();
+    chrome.tabs.remove(current.id);
+  });
 
   let thumb;
   if (item.videoId) {
