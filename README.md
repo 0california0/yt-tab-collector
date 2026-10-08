@@ -1,18 +1,19 @@
-## restrictions
+## Restrictions
 
 * for chromium based browsers
 
 ## How to install
 
-* download the entire folder -> yt-tab-sammler/yt-tab-sammler/..
-* got to the extensions tab of your browser
+* download the entire folder -> yt-tab-collector/yt-tab-collector/..
+* go to the extensions tab of your browser
   chrome://extensions/ for Chrome
   brave://extensions/ for Brave
 * enable developer mode on the top right corner
-* load the downloaded file and your good to go
+* load the downloaded file
+* finished!
 
-## how to use
+## How to use
 
-* just click the icon and a window with all your open youtube tabs will appear
-* you can choose any video and click on it which will automatically open a new window with the selected video
-* **opional:** pin the extension for easier use
+* click the icon and a window with all your open youtube tabs will appear
+* you can choose any video by clicking it. This will automatically open a new window with the selected video
+* __optional:__ pin the extension for easier use
