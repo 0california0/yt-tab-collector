@@ -12,8 +12,8 @@ the extension is loaded as an unpacked extension. This works in Brave, Chrome an
 2. open the extensions tab of your browser
    [brave://extensions/](chrome://extensions/) for Brave
    [chrome://extensions/](chrome://extensions/) for Chrome
-3. enable **Developer mode** (toggle in the top right)
-4. click **Load unpacked** and select the extension folder (the one containing 'manifest.json')
+4. enable **Developer mode** (toggle in the top right)
+5. click **Load unpacked** and select the extension folder (the one containing 'manifest.json')
 **Optional:** click the puzzel icon in the toolbar and pin the extension
 
 ## How to use
