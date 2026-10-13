@@ -1,10 +1,10 @@
 ## Features
 
-* Collect all open YouTube tabs across all open browser windows (without duplicates) in an overview with thumbnails and titles
-* Collect only videos (YouTube-Music, channel pages or YouTube search results are left out)
+* collect all open YouTube tabs across all open browser windows (without duplicates) in an overview with thumbnails and titles
+* collect only videos (YouTube-Music, channel pages or YouTube search results are left out)
 * close tabs directly form the overview
 
-## How to install
+## Installation
 
 the extension is loaded as an unpacked extension. This works in Brave, Chrome and other Chromium-based browsers.
 
@@ -16,7 +16,7 @@ the extension is loaded as an unpacked extension. This works in Brave, Chrome an
 5. click **Load unpacked** and select the extension folder (the one containing 'manifest.json')
 **Optional:** click the puzzel icon in the toolbar and pin the extension
 
-## How to use
+## Usage
 
 * click the extension icon to open the thumbnail overview of all your open YouTube tabs
 * clicking on a video will directly jump to that video and close the extension window
