@@ -1,5 +1,6 @@
 <div>
-  ## Features
+  
+## Features
 
 * collect all open YouTube tabs across all open browser windows (without duplicates) in an overview with thumbnails and titles
 * collect only videos (YouTube-Music, channel pages or YouTube search results are left out)
