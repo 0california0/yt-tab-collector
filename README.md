@@ -1,4 +1,5 @@
-## Features
+<div>
+  ## Features
 
 * collect all open YouTube tabs across all open browser windows (without duplicates) in an overview with thumbnails and titles
 * collect only videos (YouTube-Music, channel pages or YouTube search results are left out)
@@ -22,3 +23,4 @@ the extension is loaded as an unpacked extension. This works in Brave, Chrome an
 * clicking on a video will directly jump to that video and close the extension window
 * tabs can be closed by hovering over them and clicking the **✖**
 * use the **Small / Medium / Large** buttons at the top to change the thumbnail size
+</div>
