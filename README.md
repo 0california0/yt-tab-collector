@@ -12,7 +12,7 @@ the extension is loaded as an unpacked extension. This works in Brave, Chrome an
 
 1. download or clone this reposetory and keep the folde somewhere permanent(the extension is dicrely loaded form the folder)
 2. open the extensions tab of your browser <br>
-<a href="brave://extensions">Brave</a>
+<a href="brave://extensions">Brave</a> <br>
 <a href="chrome://extensions">Chrome</a>
 3. enable **Developer mode** (toggle in the top right)
 4. click **Load unpacked** and select the extension folder (the one containing 'manifest.json')
