@@ -21,7 +21,8 @@ chrome://extensions
 ```
 3. enable **Developer mode** (toggle in the top right)
 4. click **Load unpacked** and select the extension folder (the one containing 'manifest.json')
-<br>**Optional:** click the puzzel icon in the toolbar and pin the extension
+
+**Optional:** click the puzzel icon in the toolbar and pin the extension
 
 ## Usage
 
